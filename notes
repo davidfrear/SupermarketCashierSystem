@@ -1,0 +1,82 @@
+in this section I will use all that I have learned to create this project
+creating a mini supermarket cashier software.
+
+- first step accept name of product and the quantity until all entered
+- accept membership (depending on type)
+- gold membership (20%) silver (10%) bronze (5%)
+- finally calculate total.
+
+- starting with creating a simple function
+enterProduct() - accepting name and quantity
+we will use a while loop
+------------------------------------------------------------------------------------------
+   subTotal=priceData[product]*quantity
+    print(product+':$'+str(priceData[Product])+'x'+str(quantity)+'='+str(subTotal))
+    return subTotal
+
+^ once we have defined the dictionary with the product price, we can use that to find the subtotal
+^ as we know, the name of the product which will be coming as an argument is the key for the dictionary 'priceData', we can fetch its
+corresponding value, that is the price of that product with the help of the product name as the key
+^ once we have the price, simply we can multiply it with the quantity which will get us the subtotal amount that we will store in
+the 'subtotal' variable.
+^ finally we format the data and print it nicely. Some of the data such as price, subtotal, etc are integers.
+^ in order to format them and print nicely, we need to typecast them as a strong using the str() method.
+^ in the end we return with the subtotal value.
+^ that's our getPrice() function with that functionality to calculate the raw price of the products purchased by the consumer.
+
+rough output example
+Bread:$2x3=6
+Coke:$2x4=8
+[Product name]:[$Price]x[Quantity]=[Subtotal]
+
+--------------------------------------------------------------------------------------------
+creating a discount membership function
+getDiscount() which will hav e2 parameters, the total bill amount and the consumer membership
+
+Also, we will add one more condition that a discount will be given only if the billing amount is GREATER THAN $25
+
+gold - 20% off
+silver - 10% off
+bronze - 5% off
+
+-------------------------------------------------------------------------------------------
+creating the bill
+LINE 1 = simply define the method makeBill(buyingData,membership) which will need to parameters, the first is the dictionary
+of the products purchased and the second is the membership used
+
+LINE 2 = declare and initialize the variable billAmount which will hold the subtotal amount of the consumer
+
+LINE 3 + 4 = calculates the subTotal. As we had discussed that the getPrice() will return the subTotal of just one product,
+thus we need to loop through it. We will iterate over the dictionary buyingData and fetch both the key and the value using the
+items() method.
+- Once we have the key and the value. We pass those to the getPrice() function since we know it will require the product name and quantity
+- the getPrice() method returns the subTotal amount, thus we store it in the billAmount variable.
+- repeating with all products and adds to the final bill
+
+NOTE = a += b is another way of writing a=a+b ( NO BIG DEAL)
+
+LINE 5 = once subtotal of all products is stored in billAmount, we need to deduct the discount variable.
+Thus, we make a call to the getDiscount() function and pass the total bill amount which we have calculated and the membership
+which we have got as an argument to the makeBill() function.
+--- The getDiscount() function returns the final bill amount which we are storing again in the billAmount variable.
+
+LINE 6 = Finally, we print the calculated bill amount with a message/
+
+This is my makeBill() function with the functionality to generate the bill for the products purchased by the user.
+
+--------------------------------------------------------------------------------------------------
+
+Finally, we will make a call to the enterProducts() function which will set the program into action and will accept
+the product details and the dictionary and store it on the buyingData variable.
+
+Once we have the product details, we will need the membership type. Thus creating a simple input statement that accepts membership.
+To make the bill the makeBill() funtion will need the prodict details dictionary and the membership.
+At this point, I have both. Therefore, making the call to the makeBill() function by passing these parameters.
+
+pseudocode
+def enterProduct():  function1
+def getPrice(product,quantity):  function2
+def getDiscount(billAmount,membership):   function3
+def makeBill(buyingData,membership):    Function4
+#loop starts:
+  -Call function 2 until subtotal is added for all products within buyingData
